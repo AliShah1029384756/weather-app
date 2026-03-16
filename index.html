@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weather App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <div class="search-bar">
+      <input type="text" id="cityInput" placeholder="Search city..." />
+      <button id="searchBtn">Search</button>
+    </div>
+
+    <div id="errorMsg" class="error hidden"></div>
+
+    <div id="weatherCard" class="weather-card hidden">
+      <div class="location">
+        <h2 id="cityName"></h2>
+        <span id="countryCode"></span>
+      </div>
+      <div class="main-weather">
+        <div id="weatherIcon" class="weather-icon"></div>
+        <div class="temp-block">
+          <span id="temperature"></span>
+          <div class="unit-toggle">
+            <button id="celsiusBtn" class="unit-btn active">°C</button>
+            <span>/</span>
+            <button id="fahrenheitBtn" class="unit-btn">°F</button>
+          </div>
+        </div>
+      </div>
+      <p id="description"></p>
+
+      <div class="details-grid">
+        <div class="detail-item">
+          <span class="detail-label">Feels Like</span>
+          <span class="detail-value" id="feelsLike"></span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">Humidity</span>
+          <span class="detail-value" id="humidity"></span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">Wind Speed</span>
+          <span class="detail-value" id="windSpeed"></span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">Visibility</span>
+          <span class="detail-value" id="visibility"></span>
+        </div>
+      </div>
+    </div>
+
+    <div id="apiNotice" class="api-notice">
+      <p>⚠️ To use this app, add your free API key from
+        <a href="https://openweathermap.org/api" target="_blank" rel="noopener noreferrer">openweathermap.org</a>
+        into <code>app.js</code> on line 1.
+      </p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
