@@ -4,7 +4,7 @@
 ![Integration](https://img.shields.io/badge/API-OpenWeatherMap-16a34a)
 
 ## 🎨 Live Demo
-Open [`index.html`](index.html) in your browser to check the weather.
+Open [Live Demo](https://htmlpreview.github.io/?https://github.com/AliShah1029384756/weather-app/blob/main/index.html) in your browser to check the weather.
 
 ## Overview
 Real-time weather application demonstrating API integration and async JavaScript workflows.
