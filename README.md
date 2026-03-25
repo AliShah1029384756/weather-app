@@ -1,12 +1,10 @@
 # Weather App
 
-## Overview
-A real-time weather application that demonstrates external API integration and async JavaScript workflows.
+![Project](https://img.shields.io/badge/Project-Frontend-0ea5e9)
+![Integration](https://img.shields.io/badge/API-OpenWeatherMap-16a34a)
 
-## Learning Outcomes
-- Fetch and display API data safely
-- Handle loading and error states for user input
-- Build reusable UI rendering logic
+## Overview
+Real-time weather application demonstrating API integration and async JavaScript workflows.
 
 ## Tech Stack
 - HTML
@@ -22,10 +20,15 @@ A real-time weather application that demonstrates external API integration and a
    ```
 3. Open `index.html` in a browser.
 
+## Learning Outcomes
+- Fetch and display API data safely
+- Handle loading and error states for user input
+- Build reusable UI rendering logic
+
 ## Common Mistakes
 - Exposing API keys in public commits
 - Not handling invalid city names or failed responses
 
 ## Next Improvements
-- Add 5-day forecast view
+- Add a 5-day forecast view
 - Add geolocation-based weather detection
