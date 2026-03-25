@@ -3,6 +3,9 @@
 ![Project](https://img.shields.io/badge/Project-Frontend-0ea5e9)
 ![Integration](https://img.shields.io/badge/API-OpenWeatherMap-16a34a)
 
+## 🎨 Live Demo
+Open [`index.html`](index.html) in your browser to check the weather.
+
 ## Overview
 Real-time weather application demonstrating API integration and async JavaScript workflows.
 
