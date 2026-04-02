@@ -3,62 +3,125 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Weather App</title>
+  <title>Weather App | Ali Shah</title>
+  <meta name="description" content="A real-time weather app with search, metric toggles, and a modern forecast card layout.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      display: block;
+      min-height: 100vh;
+      padding: 24px;
+      background:
+        radial-gradient(circle at top, rgba(14,165,233,0.16), transparent 32%),
+        radial-gradient(circle at right, rgba(251,191,36,0.12), transparent 28%),
+        #08111f;
+      font-family: 'Inter', sans-serif;
+    }
+    .page-shell { max-width: 1100px; margin: 0 auto; }
+    .hero, .panel {
+      background: rgba(15,23,42,0.82);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      backdrop-filter: blur(18px);
+      box-shadow: 0 24px 70px rgba(0,0,0,0.4);
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 1rem;
+      padding: 2rem;
+      margin-bottom: 1.25rem;
+      align-items: center;
+    }
+    .eyebrow { display:inline-flex; gap:.5rem; align-items:center; padding:.35rem .8rem; border-radius:999px; background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.18); color:#7dd3fc; font:700 .72rem/1 'Syne',sans-serif; letter-spacing:.08em; text-transform:uppercase; margin-bottom:1rem; }
+    .hero h1 { font:800 clamp(2.2rem,5vw,4.2rem)/.95 'Syne',sans-serif; letter-spacing:-.04em; color:#f8fafc; margin-bottom:.8rem; }
+    .hero p { color:#b1bed1; max-width:58ch; line-height:1.7; }
+    .panel { padding: 1rem; }
+    .stats-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem; }
+    .stat { padding:1rem; border-radius:18px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); }
+    .stat strong { display:block; color:#fff; font:800 1rem 'Syne',sans-serif; }
+    .stat span { color:#94a3b8; font-size:.82rem; }
+    .app-stage { display:grid; place-items:center; padding: .5rem 0 2rem; }
+    .app-frame { padding: 14px; border-radius: 28px; background: linear-gradient(135deg, rgba(14,165,233,0.16), rgba(251,191,36,0.12)); width: 100%; }
+    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: 1fr; } }
+  </style>
 </head>
 <body>
-  <div class="app">
-    <div class="search-bar">
-      <input type="text" id="cityInput" placeholder="Search city..." />
-      <button id="searchBtn">Search</button>
-    </div>
-
-    <div id="errorMsg" class="error hidden"></div>
-
-    <div id="weatherCard" class="weather-card hidden">
-      <div class="location">
-        <h2 id="cityName"></h2>
-        <span id="countryCode"></span>
+  <div class="page-shell">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">LIVE WEATHER · SEARCH + TOGGLE</div>
+        <h1>Weather App</h1>
+        <p>Look up real-time conditions for any city, switch between Celsius and Fahrenheit, and inspect detailed readings in a polished card layout.</p>
       </div>
-      <div class="main-weather">
-        <div id="weatherIcon" class="weather-icon"></div>
-        <div class="temp-block">
-          <span id="temperature"></span>
-          <div class="unit-toggle">
-            <button id="celsiusBtn" class="unit-btn active">°C</button>
-            <span>/</span>
-            <button id="fahrenheitBtn" class="unit-btn">°F</button>
+      <div class="panel">
+        <div class="stats-grid">
+          <div class="stat"><strong>Search</strong><span>City-based lookup</span></div>
+          <div class="stat"><strong>Toggle</strong><span>°C and °F support</span></div>
+          <div class="stat"><strong>Detailed</strong><span>Humidity, wind, visibility</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="app-stage">
+      <div class="app-frame">
+        <div class="app">
+          <div class="search-bar">
+            <input type="text" id="cityInput" placeholder="Search city..." />
+            <button id="searchBtn">Search</button>
+          </div>
+
+          <div id="errorMsg" class="error hidden"></div>
+
+          <div id="weatherCard" class="weather-card hidden">
+            <div class="location">
+              <h2 id="cityName"></h2>
+              <span id="countryCode"></span>
+            </div>
+            <div class="main-weather">
+              <div id="weatherIcon" class="weather-icon"></div>
+              <div class="temp-block">
+                <span id="temperature"></span>
+                <div class="unit-toggle">
+                  <button id="celsiusBtn" class="unit-btn active">°C</button>
+                  <span>/</span>
+                  <button id="fahrenheitBtn" class="unit-btn">°F</button>
+                </div>
+              </div>
+            </div>
+            <p id="description"></p>
+
+            <div class="details-grid">
+              <div class="detail-item">
+                <span class="detail-label">Feels Like</span>
+                <span class="detail-value" id="feelsLike"></span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Humidity</span>
+                <span class="detail-value" id="humidity"></span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Wind Speed</span>
+                <span class="detail-value" id="windSpeed"></span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Visibility</span>
+                <span class="detail-value" id="visibility"></span>
+              </div>
+            </div>
+          </div>
+
+          <div id="apiNotice" class="api-notice">
+            <p>⚠️ To use this app, add your free API key from
+              <a href="https://openweathermap.org/api" target="_blank" rel="noopener noreferrer">openweathermap.org</a>
+              into <code>app.js</code> on line 1.
+            </p>
           </div>
         </div>
       </div>
-      <p id="description"></p>
-
-      <div class="details-grid">
-        <div class="detail-item">
-          <span class="detail-label">Feels Like</span>
-          <span class="detail-value" id="feelsLike"></span>
-        </div>
-        <div class="detail-item">
-          <span class="detail-label">Humidity</span>
-          <span class="detail-value" id="humidity"></span>
-        </div>
-        <div class="detail-item">
-          <span class="detail-label">Wind Speed</span>
-          <span class="detail-value" id="windSpeed"></span>
-        </div>
-        <div class="detail-item">
-          <span class="detail-label">Visibility</span>
-          <span class="detail-value" id="visibility"></span>
-        </div>
-      </div>
-    </div>
-
-    <div id="apiNotice" class="api-notice">
-      <p>⚠️ To use this app, add your free API key from
-        <a href="https://openweathermap.org/api" target="_blank" rel="noopener noreferrer">openweathermap.org</a>
-        into <code>app.js</code> on line 1.
-      </p>
-    </div>
+    </section>
   </div>
 
   <script src="app.js"></script>
